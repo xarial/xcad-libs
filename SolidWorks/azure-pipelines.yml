@@ -1,0 +1,12 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - SolidWorks/*
+
+stages:
+- template: /common/lib-pipeline.yml
+  parameters:
+    projectName: SolidWorks

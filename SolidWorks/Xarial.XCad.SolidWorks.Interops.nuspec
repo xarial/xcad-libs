@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Xarial.XCad.SolidWorks.Interops</id>
+    <version>0.1.1</version>
+    <authors>Xarial</authors>
+    <owners>Xarial</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <icon>icon.png</icon>
+    <projectUrl>https://xcad.net/</projectUrl>
+    <iconUrl>https://xcad.xarial.com/icon.png</iconUrl>
+    <description>SOLIDWORKS® Interop Libraries</description>
+    <copyright>© 2020 Xarial Pty Limited</copyright>
+    <tags>cad,solidworks</tags>
+  </metadata>
+  <files>
+	<file src="SolidWorks.Interop.sldworks.dll" target="lib\net40" />
+	<file src="SolidWorks.Interop.swconst.dll" target="lib\net40" />
+	<file src="SolidWorks.Interop.swpublished.dll" target="lib\net40" />
+	<file src="..\common\icon.png" target="" />
+  </files>
+</package>

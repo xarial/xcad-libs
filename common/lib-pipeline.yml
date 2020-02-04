@@ -1,0 +1,74 @@
+parameters:
+  projectName : ''
+  
+stages:
+
+- stage: 'Build'
+
+  jobs:
+  - job:
+    pool:
+      name: 'Azure Pipelines'
+      vmImage: windows-latest
+
+    steps:
+      - task: NuGetToolInstaller@0
+        displayName: 'Use NuGet 5.4.0'
+        inputs:
+          versionSpec: 5.4.0
+          checkLatest: true
+          
+      - task: NuGetCommand@2
+        displayName: 'NuGet pack'
+        inputs:
+          command: pack
+          packagesToPack: '${{ parameters.projectName }}\*.nuspec'
+          packDestination: '$(Build.ArtifactStagingDirectory)/packages'
+      
+      - publish: '$(Build.ArtifactStagingDirectory)/packages'
+        artifact: 'packages'
+
+- stage: 'PublishPreviewNuGetPackage'
+  displayName: 'Publish Prerelease NuGet Package to xarial nuget feed'
+  dependsOn: 'Build'
+  condition: succeeded()
+  jobs:
+  - job:
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    steps:
+    - checkout: none
+
+    - download: current
+      artifact: 'packages'
+
+    - task: NuGetCommand@2
+      displayName: 'Push NuGet Package'
+      inputs:
+        command: 'push'
+        packagesToPush: '$(Pipeline.Workspace)/packages/*.nupkg'
+        nuGetFeedType: 'internal'
+        publishVstsFeed: 'xarial'
+        allowPackageConflicts: true
+
+- stage: 'PublishProductionPackage'
+  displayName: 'Publish Release NuGet Package to Nuget.org production'
+  dependsOn: 'PublishPreviewNuGetPackage'
+  condition: succeeded()
+  jobs:
+  - deployment:
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'nuget-org'
+    strategy:
+     runOnce:
+       deploy:
+         steps:
+         - task: NuGetCommand@2
+           displayName: 'Push NuGet Package'
+           inputs:
+             command: 'push'
+             packagesToPush: '$(Pipeline.Workspace)/packages/*.nupkg'
+             nuGetFeedType: 'external'
+             publishFeedCredentials: 'Nuget.org'
