@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Xarial.XCad.SolidWorks.eDrawings.Interops</id>
+    <version>0.1.0</version>
+    <authors>Xarial</authors>
+    <owners>Xarial</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <icon>icon.png</icon>
+    <projectUrl>https://xcad.net/</projectUrl>
+    <iconUrl>https://xcad.xarial.com/icon.png</iconUrl>
+    <description>SOLIDWORKS® eDrawings Interop Libraries</description>
+    <copyright>© 2020 Xarial Pty Limited</copyright>
+    <tags>cad,solidworks,edrawings</tags>
+  </metadata>
+  <files>
+	<file src="eDrawings.Interop.EModelViewControl.dll" target="lib\net40" />
+	<file src="..\common\icon.png" target="" />
+  </files>
+</package>
