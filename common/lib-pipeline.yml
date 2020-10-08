@@ -90,10 +90,10 @@ stages:
               command: 'custom'
               arguments: sign "$(PackagePath)" -CertificatePath "$(Certificate.secureFilePath)" -CertificatePassword "$(CODE_SIGN_CERT_PWD)" -Timestamper http://timestamp.comodoca.com
 
-         - task: NuGetCommand@2
-           displayName: 'Push NuGet Package'
-           inputs:
-             command: 'push'
-             packagesToPush: '$(Pipeline.Workspace)/packages/*.nupkg'
-             nuGetFeedType: 'external'
-             publishFeedCredentials: 'Nuget.org'
+          - task: NuGetCommand@2
+            displayName: 'Push NuGet Package'
+            inputs:
+              command: 'push'
+              packagesToPush: '$(Pipeline.Workspace)/packages/*.nupkg'
+              nuGetFeedType: 'external'
+              publishFeedCredentials: 'Nuget.org'
