@@ -80,7 +80,7 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                $packagePath = (Get-ChildItem -Path "$(Pipeline.Workspace)/packages/release" -Filter "*.nupkg").FullName
+                $packagePath = (Get-ChildItem -Path "$(Pipeline.Workspace)/packages" -Filter "*.nupkg").FullName
                 Write-Host $packagePath
                 Write-Host "##vso[task.setvariable variable=packagePath;]$packagePath"
 
