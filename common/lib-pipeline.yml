@@ -53,6 +53,10 @@ stages:
         allowPackageConflicts: true
 
 - stage: 'PublishProductionPackage'
+  variables:
+    - group: build-vars
+    - name: packagePath
+      value:
   displayName: 'Publish Release NuGet Package to Nuget.org production'
   dependsOn: 'PublishPreviewNuGetPackage'
   condition: succeeded()
