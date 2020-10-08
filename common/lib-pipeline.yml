@@ -63,7 +63,7 @@ stages:
   jobs:
   - deployment:
     pool:
-      vmImage: 'ubuntu-latest'
+      vmImage: 'windows-latest'
     environment: 'nuget-org'
     strategy:
      runOnce:
