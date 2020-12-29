@@ -1,0 +1,12 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - SolidWorksDocumentManager/*
+
+stages:
+- template: /common/lib-pipeline.yml
+  parameters:
+    projectName: SolidWorksDocumentManager
