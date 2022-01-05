@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Xarial.XCad.SolidWorks.DocumentManager.Interops</id>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <authors>Xarial</authors>
     <owners>Xarial</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,7 +10,7 @@
     <projectUrl>https://xcad.net/</projectUrl>
     <iconUrl>https://xcad.xarial.com/icon.png</iconUrl>
     <description>SOLIDWORKS® Document Manager Interop Libraries</description>
-    <copyright>© 2020 Xarial Pty Limited</copyright>
+    <copyright>© 2022 Xarial Pty Limited</copyright>
     <tags>cad,solidworks,dm,document manager</tags>
   </metadata>
   <files>
